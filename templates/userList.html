@@ -1,0 +1,28 @@
+{%extends 'base.html' %}
+
+{%block content%}
+
+<body>
+<h1 class="titles">Users</h1>
+
+<div class="container">
+
+<table class="table table-bordered" style="text-align:center;">
+<thead style="background-color:#000; color:#fff; font-size:150%;" >
+    <th class='py-3'>Name</th>
+    <th class='py-3'>Funds</th>
+</thead>
+<tbody style="font-size:120%;">
+    {%for user in user%}
+    <tr>
+        <td class="py-3">{{user.name}}</td>
+        <td class="py-3">{{user.funds}}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+
+</div>
+</body>
+{%endblock%}

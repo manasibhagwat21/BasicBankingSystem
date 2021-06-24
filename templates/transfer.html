@@ -1,0 +1,62 @@
+{%extends 'base.html' %}
+
+{%block content%}
+<style>
+    button{
+    color:white;
+    font-size:200%;
+    background-color:#000;
+    border:none;
+    }
+</style>
+<body>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+alert("$("#sen").val() + "transferred the amount" + $("#am").val() + "to" + $("#rec").val()");
+});
+});
+</script>
+<div class="container">
+<h1 class="titles pb-5">Transfer Money Here</h1>
+
+
+<!--<table class="table table-bordered pb-5">-->
+<!--<thead class="thead-dark">-->
+<!--    <th scope="col">Username</th>-->
+<!--    <th scope="col">Funds</th>-->
+<!--</thead>-->
+<!--    {%for user in user%}-->
+<!--    <tr>-->
+<!--        <td >{{user.name}}</td>-->
+<!--        <td>{{user.funds}}</td>-->
+<!--    </tr>-->
+<!--    {% endfor %}-->
+<!--</table>-->
+
+
+
+<form action="transfer" method='post'>
+    {% csrf_token %}
+
+    <div class="row py-4">
+    <h2 class="tit col-md-4">Enter Sender</h2>
+    <input class="col-md-8" id="sen" placeholder="Sender">
+    </div>
+
+    <div class="row py-4">
+    <h2 class="tit col-md-4">Enter Recipient</h2>
+    <input class="col-md-8" id="rec" name="name" placeholder="Recipient">
+    </div>
+
+    <div class="row py-4">
+    <h2 class="tit col-md-4">Enter Amount</h2>
+    <input class="col-md-8" id="am" name="funds" placeholder="Amount">
+    </div>
+
+    <button type="submit" class="button col-md-12 py-2 my-5">Transfer</button>
+</form>
+
+</div>
+</body>
+{%endblock%}
