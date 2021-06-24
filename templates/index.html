@@ -15,19 +15,29 @@
     background-color:#000;
     border:none;
     }
+    .ind a{
+    color:white;
+    font-size:150%;
+    background-color:#000;
+    text-align:center;
+    border:solid 1px #fff;
+    }
 </style>
 <body>
 <div class="container">
-    <h1 class="titles pt-5">The Sparks Foundation's GRIP JULY 2021</h1>
+    <h1 class="titles pt-5" style="font-size:400%;">The Sparks Foundation's GRIP JULY 2021</h1>
     <h2 class="tit1 py-3">Basic Banking System</h2>
 
-    <div class="row py-5">
-            <button class="button col-md-5 p-5 mx-5">Transfer Funds</button>
-            <button class="button col-md-5 p-5 mx-5">See Users</button>
+    <div class="row py-5 ind">
+        <a href="transfer" class="col-md-6 py-5"><button class="button">Transfer Funds</button></a>
+        <a href="userList" class="col-md-6 py-5"><button class="button">See Users</button></a>
     </div>
 
 
 
 </div>
 </body>
+<footer class="py-10 mt-10">
+    <h4>&copy; 2021 All Rights Reserved by Manasi Bhagwat for The Sparks Foundation's GRIP JULY 2021</h4>
+</footer>
 {%endblock%}

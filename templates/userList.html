@@ -7,14 +7,16 @@
 
 <div class="container">
 
-<table class="table table-bordered" style="text-align:center;">
+<table class="table table-bordered my-5" style="text-align:center;">
 <thead style="background-color:#000; color:#fff; font-size:150%;" >
+    <th class='py-3' scope="row">Sr No</th>
     <th class='py-3'>Name</th>
     <th class='py-3'>Funds</th>
 </thead>
 <tbody style="font-size:120%;">
     {%for user in user%}
     <tr>
+    <th scope="row">{{user.id}}</th>
         <td class="py-3">{{user.name}}</td>
         <td class="py-3">{{user.funds}}</td>
     </tr>

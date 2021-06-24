@@ -19,11 +19,18 @@ def index(request):
 def transfer(request):
     usersL = Transfer.objects.all()
     if request.method == 'POST':
+        sender = request.POST.get('sender')
         name = request.POST.get('name')
         funds = request.POST.get('funds')
+
+        sender = Transfer.objects.get(name=sender)
+        sender.funds -= int(funds)
+        sender.save()
         user = Transfer.objects.get(name=name)
         user.funds += int(funds)
         user.save()
+
+        redirect('index.html')
 
     return render(request, 'transfer.html', {"user": usersL})
 
