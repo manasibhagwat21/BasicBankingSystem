@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 import os
 
 from .forms import TransferFunds
-from .models import Transfer
+from .models import Transfer, TransferHistory
 
 
 def index(request):
@@ -18,10 +18,14 @@ def index(request):
 
 def transfer(request):
     usersL = Transfer.objects.all()
+    his = TransferHistory.objects.all()
     if request.method == 'POST':
         sender = request.POST.get('sender')
         name = request.POST.get('name')
         funds = request.POST.get('funds')
+
+        history = TransferHistory(sender=sender, receiver=name, funds=funds)
+        history.save()
 
         sender = Transfer.objects.get(name=sender)
         sender.funds -= int(funds)
@@ -31,8 +35,9 @@ def transfer(request):
         user.save()
 
         redirect('index.html')
+    p = dict(user=usersL, his=his)
+    return render(request, 'transfer.html', p)
 
-    return render(request, 'transfer.html', {"user": usersL})
 
 def userList(request):
     users = Transfer.objects.all()

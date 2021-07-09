@@ -1,15 +1,14 @@
 {%extends 'base.html' %}
 
 {%block content%}
+
 <style>
-    button{
+button{
     color:white;
     font-size:200%;
     background-color:#000;
     border:none;
     }
-</style>
-<style>
 .collapsible {
   background-color: #000;
   color: white;
@@ -61,7 +60,24 @@
     {% endfor %}
 </table>
 </div>
-
+<br>
+<button class="collapsible">View Transaction History</button>
+<div class="content">
+    <table class="table table-bordered pb-5">
+    <thead class="thead-dark">
+        <th scope="col">Sender</th>
+        <th scope="col">Receiver</th>
+        <th scope="col">Amount Sent</th>
+    </thead>
+    {%for his in his%}
+    <tr>
+        <td>{{his.sender}}</td>
+        <td>{{his.receiver}}</td>
+        <td>{{his.funds}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
 
 <form action="transfer" method='post'>
     {% csrf_token %}
@@ -81,7 +97,7 @@
     <input class="col-md-8" id="am" name="funds" placeholder="Amount">
     </div>
 
-    <button type="submit" class="button col-md-12 py-2 my-5">Transfer</button>
+    <button id="btn" onclick="myFunction()" type="submit" class="button col-md-12 py-2 my-5">Transfer</button>
 </form>
 
 </div>
@@ -101,9 +117,10 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 }
+
 </script>
 <script>
-$("button").click(function(){
+$("#btn").click(function(){
 var str1 = $("#sen").val();
 var str2 = $("#rec").val();
 var str3 = $("#am").val();
